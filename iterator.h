@@ -20,6 +20,7 @@ class Iterator {
         }
 
         Iterator<T>& operator=(const Iterator<T> &other) {
+            // Estás creando un nuevo iterador
             current = Iterator<T>(other.current);
             return *this;
         }
@@ -57,6 +58,7 @@ class Iterator {
         }
 
         T operator*() {
+            // Caso de null?
             return current->data;
         }
 };

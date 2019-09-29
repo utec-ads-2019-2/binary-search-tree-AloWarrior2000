@@ -29,6 +29,7 @@ class BSTree {
 
         bool insert(T data) {
             auto* ans = new Node<T>;
+            // Los hijos no apuntan a nullptr
             ans->data = data;
             if (root == nullptr){
                 root = ans;
@@ -54,6 +55,7 @@ class BSTree {
             }
         }
         bool remove(T data) {
+            // Podrías manejarlo de otra forma para evitar hacer un doble recorrido (e.g. puntero doble)
             if (!find(data)) return false;
             else {
                 auto *x = root;
@@ -145,7 +147,8 @@ class BSTree {
                 }
             }else if (!pos->right) {
                 return getNodeHeight(pos->left)+1;
-            } else {
+            } else { 
+                // El 1 + podrías sacarlo: 1 + (max(...))
                 return max(1 + getNodeHeight(pos->left), 1 + getNodeHeight(pos->right));
             }
 
@@ -217,6 +220,7 @@ class BSTree {
         }
 
         ~BSTree() {
+            // Si head es null?
             destroyUnder(root);
         }
 };
